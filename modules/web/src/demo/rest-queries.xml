@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<queries xmlns="http://schemas.haulmont.com/cuba/rest-queries.xsd">
+    <query name="manufacturersByCountry" entity="demo$Manufacturer" view="_minimal">
+        <jpql><![CDATA[select m from demo$Manufacturer m where m.country like concat('%',:country,'%')]]></jpql>
+        <params>
+            <param name="country" type="java.lang.String"/>
+        </params>
+    </query>
+</queries>

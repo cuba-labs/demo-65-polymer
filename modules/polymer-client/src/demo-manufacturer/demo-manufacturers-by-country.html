@@ -1,0 +1,77 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-selector/iron-selector.html">
+<link rel="import" href="../../bower_components/cuba-app/cuba-localize-behavior.html">
+<link rel="import" href="../../bower_components/cuba-ui/cuba-entity-list-view-behavior.html">
+<link rel="import" href="../../bower_components/cuba-styles/cuba-styles.html">
+<link rel="import" href="../shared-styles.html">
+
+
+<dom-module id="demo-manufacturers-by-country">
+  <template>
+    <style include="cuba-styles"></style>
+    <style include="shared-styles"></style>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <cuba-query id="data"
+                entity-name="demo$Manufacturer"
+                query-name="manufacturersByCountry"
+                params="[[queryParams]]"
+                data="{{entities}}"
+                loading="{{dataLoading}}"
+                provide-count="true"
+                count="{{entitiesCount}}"
+                auto="[[active]]">
+    </cuba-query>
+
+    <paper-toolbar id="toolbar" class="list-toolbar">
+
+      <div class="filter">
+        <paper-input value="{{queryParams.country}}"
+                     label="country"
+
+
+                     error-message="[[serverErrors.country]]"
+                     invalid="[[_isInvalid(serverErrors.country)]]">
+        </paper-input>
+      </div>
+
+      <span class="title">
+        <paper-spinner active="[[dataLoading]]"></paper-spinner>
+      </span>
+      <paper-icon-button icon="refresh"
+                         on-tap="reload"></paper-icon-button>
+    </paper-toolbar>
+    <iron-selector id="selector" on-iron-activate="_handleSelectionChange" class="item-list">
+      <template id="entitiesList" is="dom-repeat" items="{{entities}}">
+        <div class="row">
+          <div class="title">[[item._instanceName]]</div>
+        </div>
+      </template>
+    </iron-selector>
+    <template is="dom-if" if="[[moreDataAvailable]]">
+      <paper-button on-tap="_loadMore" class="load-more">
+        Load more
+      </paper-button>
+    </template>
+  </template>
+  <script>
+    Polymer({
+      is: 'demo-manufacturers-by-country',
+      behaviors: [CubaLocalizeBehavior, CubaEntityListViewBehavior],
+      properties: {
+        queryParams: {
+          type: Object,
+          value: {
+            offset: 0,
+            limit: 10,
+            country: null
+
+          }
+        }
+      }
+    });
+  </script>
+</dom-module>

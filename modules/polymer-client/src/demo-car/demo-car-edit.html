@@ -1,11 +1,14 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../bower_components/cuba-app/cuba-localize-behavior.html">
 <link rel="import" href="../../bower_components/cuba-ui/cuba-entity-edit-view-behavior.html">
+<link rel="import" href="../../bower_components/cuba-ui/cuba-lookup.html">
 <link rel="import" href="../../bower_components/cuba-data/cuba-entity.html">
 <link rel="import" href="../../bower_components/cuba-form/cuba-entity-form.html">
 <link rel="import" href="../../bower_components/cuba-file-field/cuba-file-field.html">
 <link rel="import" href="../../bower_components/cuba-styles/cuba-styles.html">
 <link rel="import" href="../shared-styles.html">
+
+<link rel="import" href="../demo-manufacturer/demo-manufacturers-by-country.html">
 
 <dom-module id="demo-car-edit">
   <template>
@@ -42,6 +45,7 @@
                                 invalid="[[_isInvalid(serverErrors.manufacturer)]]">
               </vaadin-combo-box>
             </div>
+            <demo-manufacturers-by-country class="lookup-screen"></demo-manufacturers-by-country>
           </cuba-lookup>
           <paper-input value="{{entity.model}}"
                        label="[[msg('demo$Car.model')]]"
