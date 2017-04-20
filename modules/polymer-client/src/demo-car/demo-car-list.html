@@ -1,0 +1,59 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-selector/iron-selector.html">
+<link rel="import" href="../../bower_components/cuba-app/cuba-localize-behavior.html">
+<link rel="import" href="../../bower_components/cuba-ui/cuba-entity-list-view-behavior.html">
+<link rel="import" href="../../bower_components/cuba-data/cuba-entities.html">
+<link rel="import" href="../../bower_components/cuba-styles/cuba-styles.html">
+<link rel="import" href="../shared-styles.html">
+
+
+<dom-module id="demo-car-list">
+  <template>
+    <style include="cuba-styles"></style>
+    <style include="shared-styles"></style>
+    <style>
+      :host {
+        display: block;
+      }
+      paper-card {
+        cursor: pointer;
+      }
+    </style>
+
+    <cuba-entities id="data"
+                   entity-name="demo$Car"
+                   data="{{entities}}"
+                   view="_local"
+                   loading="{{dataLoading}}"
+                   limit="10"
+                   provide-count="true"
+                   count="{{entitiesCount}}"
+                   auto="[[active]]">
+    </cuba-entities>
+
+    <iron-selector id="selector" on-iron-activate="_handleSelectionChange">
+      <template id="entitiesList" is="dom-repeat" items="{{entities}}">
+        <paper-card heading="[[item._instanceName]]" on-tap="_handleItemTap" class="page-widget">
+          <div class="card-content">
+            [[msg('demo$Car.model')]]: [[item.model]]<br>
+
+[[msg('demo$Car.carType')]]: [[item.carType]]<br>
+
+
+          </div>
+        </paper-card>
+      </template>
+    </iron-selector>
+
+    <paper-button on-tap="_loadMore" class="load-more" hidden$="[[!moreDataAvailable]]">
+      [[msg('Load more')]]
+    </paper-button>
+
+  </template>
+  <script>
+    Polymer({
+      is: 'demo-car-list',
+      behaviors: [CubaLocalizeBehavior, CubaEntityListViewBehavior]
+    });
+  </script>
+</dom-module>
