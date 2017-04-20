@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <views xmlns="http://schemas.haulmont.com/cuba/view.xsd">
-
+    <view class="demo.entity.Car"
+          extends="_local"
+          name="car-edit">
+        <property name="manufacturer"
+                  view="_minimal"/>
+        <property name="photo"
+                  view="_minimal"/>
+    </view>
 </views>
