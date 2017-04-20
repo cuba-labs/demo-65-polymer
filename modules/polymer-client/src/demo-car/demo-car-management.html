@@ -29,9 +29,9 @@
 
     <template is="dom-if" if="[[showEditor]]" restamp="true">
       <demo-car-edit entity-id="[[editedEntityId]]"
-                       on-commit="_onEditorCommit"
-                       on-cancel="_closeEditor"
-                       on-delete="_deleteEntity"></demo-car-edit>
+                     on-commit="_onEditorCommit"
+                     on-cancel="_closeEditor"
+                     on-delete="_deleteEntity"></demo-car-edit>
     </template>
 
     <template is="dom-if" if="[[!showEditor]]">
@@ -43,9 +43,9 @@
         <paper-icon-button icon="add" on-tap="_createEntity"></paper-icon-button>
       </paper-toolbar>
       <demo-car-list id="list"
-                            active="[[active]]"
-                            on-item-tap="_editEntity"
-                            data-loading="{{dataLoading}}"></demo-car-list>
+                     active="[[active]]"
+                     on-item-tap="_editEntity"
+                     data-loading="{{dataLoading}}"></demo-car-list>
     </template>
 
     <paper-toast id="successMessage">[[msg('Successfully saved')]]</paper-toast>
@@ -72,29 +72,29 @@
           value: false
         }
       },
-      _computeShowEditor: function() {
+      _computeShowEditor: function () {
         return this.active && this.actionRouteActive;
       },
-      _computeEditedEntityId: function() {
+      _computeEditedEntityId: function () {
         return this.idRouteActive ? this.idRouteData.id : null;
       },
-      _reload: function() {
+      _reload: function () {
         this.$$('#list').reload();
       },
-      _createEntity: function() {
+      _createEntity: function () {
         this.fire('navigate', this.route.prefix + '/new');
       },
-      _editEntity: function(event, detail) {
-        this.fire('navigate', this.route.prefix + '/edit/' +  detail.id);
+      _editEntity: function (event, detail) {
+        this.fire('navigate', this.route.prefix + '/edit/' + detail.id);
       },
-      _deleteEntity: function(event, detail) {
+      _deleteEntity: function (event, detail) {
         var listComponent = this.$$('#list');
         if (listComponent) {
           listComponent.remove(detail.entity);
         }
         this._closeEditor();
       },
-      _onEditorCommit: function() {
+      _onEditorCommit: function () {
         var listComponent = this.$$('#list');
         if (listComponent) {
           listComponent.reload();
@@ -102,7 +102,7 @@
         this.$.successMessage.open();
         this._closeEditor();
       },
-      _closeEditor: function() {
+      _closeEditor: function () {
         this.fire('navigate', this.route.prefix);
       }
     });

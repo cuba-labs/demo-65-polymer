@@ -15,6 +15,7 @@
       :host {
         display: block;
       }
+
       paper-card {
         cursor: pointer;
       }
@@ -35,11 +36,7 @@
       <template id="entitiesList" is="dom-repeat" items="{{entities}}">
         <paper-card heading="[[item._instanceName]]" on-tap="_handleItemTap" class="page-widget">
           <div class="card-content">
-            [[msg('demo$Manufacturer.name')]]: [[item.name]]<br>
-
-[[msg('demo$Manufacturer.country')]]: [[item.country]]<br>
-
-
+            [[msg('demo$Manufacturer.country')]]: [[item.country]]<br>
           </div>
         </paper-card>
       </template>

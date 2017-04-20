@@ -1,4 +1,3 @@
-
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../bower_components/cuba-app/cuba-localize-behavior.html">
 <link rel="import" href="../../bower_components/cuba-ui/cuba-entity-edit-view-behavior.html">
@@ -28,21 +27,18 @@
       <paper-card>
         <div class="card-content">
 
-        <paper-input value="{{entity.name}}"
-             label="[[msg('demo$Manufacturer.name')]]"
-             
-             maxlength="255"
-             error-message="[[serverErrors.name]]"
-             invalid="[[_isInvalid(serverErrors.name)]]">
-</paper-input>
-<paper-input value="{{entity.country}}"
-             label="[[msg('demo$Manufacturer.country')]]"
-             
-             maxlength="255"
-             error-message="[[serverErrors.country]]"
-             invalid="[[_isInvalid(serverErrors.country)]]">
-</paper-input>
-
+          <paper-input value="{{entity.name}}"
+                       label="[[msg('demo$Manufacturer.name')]]"
+                       maxlength="255"
+                       error-message="[[serverErrors.name]]"
+                       invalid="[[_isInvalid(serverErrors.name)]]">
+          </paper-input>
+          <paper-input value="{{entity.country}}"
+                       label="[[msg('demo$Manufacturer.country')]]"
+                       maxlength="255"
+                       error-message="[[serverErrors.country]]"
+                       invalid="[[_isInvalid(serverErrors.country)]]">
+          </paper-input>
 
         </div>
         <div class="card-actions">

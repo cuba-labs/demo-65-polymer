@@ -8,4 +8,9 @@
         <property name="photo"
                   view="_minimal"/>
     </view>
+    <view class="demo.entity.Car"
+          extends="_minimal"
+          name="car-view">
+        <property name="carType"/>
+    </view>
 </views>

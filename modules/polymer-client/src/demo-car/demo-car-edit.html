@@ -1,4 +1,3 @@
-
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../bower_components/cuba-app/cuba-localize-behavior.html">
 <link rel="import" href="../../bower_components/cuba-ui/cuba-entity-edit-view-behavior.html">
@@ -28,38 +27,37 @@
       <paper-card>
         <div class="card-content">
 
-        <cuba-lookup picked-entity="{{entity.manufacturer}}">
-  <div class="dropdown">
-    <cuba-entities entity-name="demo$Manufacturer" view="_minimal" data="{{entity_manufacturerOptions}}"></cuba-entities>
-    <vaadin-combo-box label="[[msg('demo$Car.manufacturer')]]"
-                      items="[[entity_manufacturerOptions]]"
-                      selected-item="{{entity.manufacturer}}"
-                      item-label-path="_instanceName"
-                      item-value-path="id"
-                      value="[[entity.manufacturer.id]]"
-                      
-                      error-message="[[serverErrors.manufacturer]]"
-                      invalid="[[_isInvalid(serverErrors.manufacturer)]]">
-    </vaadin-combo-box>
-  </div>
-</cuba-lookup>
-<paper-input value="{{entity.model}}"
-             label="[[msg('demo$Car.model')]]"
-             
-             maxlength="255"
-             error-message="[[serverErrors.model]]"
-             invalid="[[_isInvalid(serverErrors.model)]]">
-</paper-input>
-<vaadin-combo-box label="[[msg('demo$Car.carType')]]"
-                  items="[[enumValues('demo.entity.CarType')]]"
-                  value="{{entity.carType}}"
-                  error-message="[[serverErrors.carType]]"
-                  invalid="[[_isInvalid(serverErrors.carType)]]"
-                  >
-</vaadin-combo-box>
-<cuba-file-field label="[[msg('Upload')]] [[msg('demo$Car.photo')]]"
-                 file-descriptor="{{entity.photo}}"></cuba-file-field>
+          <cuba-lookup picked-entity="{{entity.manufacturer}}">
+            <div class="dropdown">
+              <cuba-entities entity-name="demo$Manufacturer" view="_minimal"
+                             data="{{entity_manufacturerOptions}}"></cuba-entities>
+              <vaadin-combo-box label="[[msg('demo$Car.manufacturer')]]"
+                                items="[[entity_manufacturerOptions]]"
+                                selected-item="{{entity.manufacturer}}"
+                                item-label-path="_instanceName"
+                                item-value-path="id"
+                                value="[[entity.manufacturer.id]]"
 
+                                error-message="[[serverErrors.manufacturer]]"
+                                invalid="[[_isInvalid(serverErrors.manufacturer)]]">
+              </vaadin-combo-box>
+            </div>
+          </cuba-lookup>
+          <paper-input value="{{entity.model}}"
+                       label="[[msg('demo$Car.model')]]"
+
+                       maxlength="255"
+                       error-message="[[serverErrors.model]]"
+                       invalid="[[_isInvalid(serverErrors.model)]]">
+          </paper-input>
+          <vaadin-combo-box label="[[msg('demo$Car.carType')]]"
+                            items="[[enumValues('demo.entity.CarType')]]"
+                            value="{{entity.carType}}"
+                            error-message="[[serverErrors.carType]]"
+                            invalid="[[_isInvalid(serverErrors.carType)]]">
+          </vaadin-combo-box>
+          <cuba-file-field label="[[msg('Upload')]] [[msg('demo$Car.photo')]]"
+                           file-descriptor="{{entity.photo}}"></cuba-file-field>
 
         </div>
         <div class="card-actions">

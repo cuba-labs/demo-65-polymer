@@ -15,6 +15,7 @@
       :host {
         display: block;
       }
+
       paper-card {
         cursor: pointer;
       }
@@ -23,7 +24,7 @@
     <cuba-entities id="data"
                    entity-name="demo$Car"
                    data="{{entities}}"
-                   view="_local"
+                   view="car-view"
                    loading="{{dataLoading}}"
                    limit="10"
                    provide-count="true"
@@ -35,11 +36,7 @@
       <template id="entitiesList" is="dom-repeat" items="{{entities}}">
         <paper-card heading="[[item._instanceName]]" on-tap="_handleItemTap" class="page-widget">
           <div class="card-content">
-            [[msg('demo$Car.model')]]: [[item.model]]<br>
-
-[[msg('demo$Car.carType')]]: [[item.carType]]<br>
-
-
+            [[msg('demo$Car.carType')]]: [[item.carType]]<br>
           </div>
         </paper-card>
       </template>
